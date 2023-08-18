@@ -14,7 +14,7 @@ int main()
 
     char three_lines[16] = "abcde\nfghi\nxyz\n";
     reverse(three_lines);
-    printf("%s", three_lines); // edcba\nihgf\nzyx\0
+    printf("%s", three_lines); // edcba\nihgf\nzyx\n\0
 }
 
 void reverse(char s[])
