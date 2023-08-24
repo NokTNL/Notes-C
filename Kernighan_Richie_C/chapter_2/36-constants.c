@@ -12,5 +12,4 @@ int main()
     //
     // Unsigned constants will have "U" suffix
     //  - This can be mixed with all types above
-    //
 }

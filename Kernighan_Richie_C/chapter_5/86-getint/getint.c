@@ -45,16 +45,18 @@ int getint(int *number_pos)
         }
     }
 
-    /* Is digit */
-    *number_pos = 0;
-    do
+    /* Digit processing */
     {
-        *number_pos = *number_pos * 10 + (c - '0');
-    } while (isdigit((c = getch())));
+        *number_pos = 0;
+        do
+        {
+            *number_pos = *number_pos * 10 + (c - '0');
+        } while (isdigit((c = getch())));
 
-    if (c != EOF)
-    {
-        ungetch(c);
+        if (c != EOF)
+        {
+            ungetch(c);
+        }
+        return IS_NUMBER;
     }
-    return IS_NUMBER;
 }

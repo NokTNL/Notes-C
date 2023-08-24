@@ -1,6 +1,8 @@
 #include <stdio.h>
 #define MAXCHAR 1000
 
+// NOTE: Accessing array item by subscript beyond its length is LEGAL, but the behaviour is undefined (i.e. may evaluate to a nonsense values). Compiler MAY shout to you if you try to do that.
+
 // In function declaration/definitions, array arguments need NOT the length defined. This is determined by the caller (where the arrays would have been initialised)
 void copy_str(char from[], char to[]);
 int gettext(char s[], int limit);
@@ -32,6 +34,7 @@ int gettext(char s[], int limit)
     //      "hello\n"
     //  --> this is a string constant, which essentially means the array
     //      'h', 'e', 'l', 'l', 'o', '\n', '\0'
+    // - NOTE: '\0' has the value 0 !
     // In printf, if you print a string placeholder (%s), you MUST end the value somewhere with '\0' to make it work
     s[i] = '\0';
     return i;
