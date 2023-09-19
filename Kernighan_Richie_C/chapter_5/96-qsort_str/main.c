@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "qsort.c"
+#include "assertion.c"
 
 void sort_and_assert_str_arrays(char *strs_target[], char *strs_expected[], int len);
 
@@ -14,42 +15,38 @@ int main()
     char *expect_strs_2[10] = {"a", "b"};
     sort_and_assert_str_arrays(test_strs_2, expect_strs_2, 2);
 
-    char *test_strs_3[10] = {"c", "a", "b"};
+    char *test_strs_3[10] = {"b", "c", "a"};
     char *expect_strs_3[10] = {"a", "b", "c"};
     sort_and_assert_str_arrays(test_strs_3, expect_strs_3, 3);
+
+    char *test_strs_4[10] = {"a", "c", "b"};
+    char *expect_strs_4[10] = {"a", "b", "c"};
+    sort_and_assert_str_arrays(test_strs_4, expect_strs_4, 3);
+
+    char *test_strs_5[10] = {"c", "b", "a"};
+    char *expect_strs_5[10] = {"a", "b", "c"};
+    sort_and_assert_str_arrays(test_strs_5, expect_strs_5, 3);
+
+    char *test_strs_6[10] = {"c", "a", "b"};
+    char *expect_strs_6[10] = {"a", "b", "c"};
+    sort_and_assert_str_arrays(test_strs_6, expect_strs_5, 3);
+
+    char *test_strs_7[10] = {"a", "b", "c"};
+    char *expect_strs_7[10] = {"a", "b", "c"};
+    sort_and_assert_str_arrays(test_strs_7, expect_strs_7, 3);
+
+    char *test_strs_8[10] = {"b", "a", "c"};
+    char *expect_strs_8[10] = {"a", "b", "c"};
+    sort_and_assert_str_arrays(test_strs_8, expect_strs_8, 3);
 }
 
 void sort_and_assert_str_arrays(char *strs_target[], char *strs_expected[], int len)
 {
-    int i;
-    char is_equal = 1;
-
-    for (i = 0; i < len; ++i)
-    {
-        printf("%s ", strs_target[i]);
-    }
-    printf("--> ");
+    print_before(strs_target, len);
 
     qsort_str(strs_target, 0, len - 1);
 
-    for (i = 0; i < len; ++i)
-    {
-        printf("%s ", strs_target[i]);
-    }
-    printf(", expected: ");
+    print_after(strs_target, len);
 
-    for (i = 0; i < len; ++i)
-    {
-        printf("%s ", strs_expected[i]);
-        if (strcmp(strs_target[i], strs_expected[i]) != 0)
-        {
-            is_equal = 0;
-        }
-    }
-
-    if (!is_equal)
-    {
-        printf("\t!! FAILED");
-    }
-    printf("\n");
+    print_expectation(strs_target, strs_expected, len);
 }
