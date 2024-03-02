@@ -4,7 +4,7 @@ int main()
     printf("Hello World!"); // "Hello World!" is a string constant
     // Declaring a string constant will create a character array somewhere in the memory.
     // When evaluating the string constant, it yields the address of that array
-    // So in the printf example above, you are actually passing the address of the {'H', 'e', ..... 'o', '\0'} array to printf. Again, this is DIFFERENT from other constants in that you are passing by reference into the function instead of providing a copy of the value.
+    // So in the printf example above, you are actually passing the address of the 'H', 'e', ..... 'o', '\0' array to printf. Again, this is DIFFERENT from other constants in that you are passing by reference into the function instead of providing a copy of the value.
 
     char str[] = "Hello";
     char *p = "Hello"; // <-- You are just passing an address that points to that array of characters
